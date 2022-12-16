@@ -1,0 +1,61 @@
+{
+  "name": "@jjordy/use-window-state",
+  "version": "0.0.1",
+  "description": "Hook to sync the url and complex state.",
+  "private": false,
+  "main": "./dist/index.js",
+  "module": "./esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**",
+    "esm/**"
+  ],
+  "scripts": {
+    "build": "rimraf esm && rimraf dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --target ESNext --module ES6 --outDir esm",
+    "build:cjs": "ncc build src/index.tsx -o dist -m -e react",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "SWR",
+    "Devtools",
+    "Devtool"
+  ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ]
+  },
+  "author": "Jordan Addison <jordanrileyaddison@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.1",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "@vercel/ncc": "^0.31.1",
+    "babel-jest": "^27.3.1",
+    "jest": "^27.3.1",
+    "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "qs": "^6.11.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
