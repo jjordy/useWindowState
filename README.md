@@ -1,6 +1,6 @@
-# SWR Devtools
+# useWindowState
 
-Devtools for [swr](https://swr.now.sh/)
+Keep your url in sync with any arbitrary state thats serializable
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ Devtools for [swr](https://swr.now.sh/)
 * [License](#license)
 
 ## Live Demo
-[![Edit swr-devtools (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/exciting-benz-t5pq0?file=/src/App.tsx)
+[![Edit useWindowState (forked)](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/usewindowstate-7fkowk)
 
 
 ## Install
@@ -22,31 +22,32 @@ Devtools for [swr](https://swr.now.sh/)
 #### NPM
 
 ```bash
-npm install @jjordy/swr-devtools
+npm install @jjordy/use-window-state
 ```
 
 #### Yarn
 
 ```bash
-yarn add @jjordy/swr-devtools
+yarn add @jjordy/use-window-state
 ```
 
 #### Usage
 
-**``swr - 1.0.0`` is required at minimum .**
+```typescript
+import useWindowSize from "@jjordy/use-window-size";
 
-Import SWRDevtools and our custom devtools cache and use like below.
-Custom cache is required > 1.0 swr to re-implement subscribe behavior which swr devtools relys on.
-The SWRConfig with custom devtools cache should be above any request using swr.
-```javascript
-import { SWRConfig } from "swr";
-import SWRDevtools from "@jjordy/swr-devtools";
+type MyUrlState = {
+  limit: number;
+  offset: number;
+  query: string;
+}
 
 export default function App({ Component, pageProps }) {
+  const { state, update } = useWindowSize<MyUrlState>({ initialValues: { limit: 0, offset: 0, query: ''}})
   return (
-    <SWRDevtools>
-      <Component {...pageProps} />
-    </SWRDevtools>
+    <div>
+      <Pagination limit={limit} offset={offset} />
+    </div>
   );
 }
 ```
@@ -56,11 +57,8 @@ export default function App({ Component, pageProps }) {
 
 | Name  | Type  | Required  | Default |
 |---|---|---|---| 
-| CustomOpenComponent  | `React.ReactNode`  |  no |
-| debug | `boolean` | no |
-| position | `string`: `"right","left"` | no | right
-
-
+| initialState | `any`  |  no |
+| options | `qs options overrides` | {} |
 
 ## Maintainers
 
