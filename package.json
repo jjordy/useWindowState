@@ -1,6 +1,6 @@
 {
   "name": "@jjordy/use-window-state",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Hook to sync the url and complex state.",
   "private": false,
   "main": "./dist/index.js",
@@ -15,6 +15,7 @@
     "build:esm": "tsc --target ESNext --module ES6 --outDir esm",
     "build:cjs": "ncc build src/index.tsx -o dist -m -e react",
     "dev": "tsc --watch",
+    "prepublish": "npm run build",
     "test": "jest",
     "watch": "tsc --watch"
   },
@@ -59,5 +60,13 @@
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjordy/useWindowState.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjordy/useWindowState/issues"
+  },
+  "homepage": "https://github.com/jjordy/useWindowState#readme"
 }

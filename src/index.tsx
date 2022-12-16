@@ -32,6 +32,6 @@ export default function useWindowState<T>({
   }, []);
   return {
     update,
-    state: state as T,
+    state,
   };
 }
