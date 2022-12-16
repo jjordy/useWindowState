@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }) {
   const { state, update } = useWindowSize<MyUrlState>({ initialValues: { limit: 0, offset: 0, query: ''}})
   return (
     <div>
-      <Pagination limit={limit} offset={offset} />
+      <Pagination limit={state.limit} offset={state.offset} />
     </div>
   );
 }
@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }) {
 | Name  | Type  | Required  | Default |
 |---|---|---|---| 
 | initialState | `any`  |  no |
-| options | `qs options overrides` | {} |
+| options | `qs options overrides` | no | {} |
 
 ## Maintainers
 
